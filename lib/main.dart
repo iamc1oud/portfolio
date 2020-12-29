@@ -47,6 +47,7 @@ class _HomePageState extends State<HomePage> {
           elevation: 5,
           inactiveColor: Colors.white,
           rightCornerRadius: 0,
+          gapWidth: 20,
           gapLocation: GapLocation.end,
           onTap: (int currentPosition) {
             setState(() {

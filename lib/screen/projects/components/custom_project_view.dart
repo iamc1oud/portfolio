@@ -36,11 +36,20 @@ class CustomProjectCard extends StatelessWidget {
             filter: ImageFilter.blur(sigmaX: 5, sigmaY: 2),
             child: Padding(
               padding: const EdgeInsets.only(left: 18.0),
+
+              /// TODO Add fade-in transition for the project name and its description.
+              /// Convert stateless to stateful and use animation controllers
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  //
+                  // [Project Name]
+                  //
                   Text(this.title, style: GoogleFonts.robotoMono(fontSize: 100, color: Colors.white)),
+                  //
+                  // [Project Description]
+                  //
                   Text(this.description, style: GoogleFonts.robotoMono(fontSize: 30, color: Color(0xFFC4C4C4))),
                   SizedBox(
                     height: 20,

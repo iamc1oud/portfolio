@@ -34,7 +34,7 @@ class _AboutPageState extends State<AboutDesktop> {
                           repeatForever: false,
                           onFinished: () {},
                           speed: Duration(milliseconds: 200),
-                          text: ["Hi,\nI'm Ajay.\nFlutter Developer."],
+                          text: ["Hi,\nI'm Ajay\nFlutter Developer"],
                           textStyle:
                               GoogleFonts.robotoMono(fontSize: 100, fontWeight: FontWeight.bold, color: Colors.white),
                         ),

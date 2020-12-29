@@ -1,7 +1,7 @@
 import 'exports_about.dart';
 
 class AboutMobile extends StatelessWidget {
-  Color blackColorAccent = Color(0xFFDD5144);
+  Color blackColorAccent = Color(0xff2C2F33);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -27,7 +27,7 @@ class AboutMobile extends StatelessWidget {
                         print("go to projects section");
                       },
                       speed: Duration(milliseconds: 100),
-                      text: ["Hi", "I'm Ajay", "Flutter Developer"],
+                      text: ["Hi,\nI'm Ajay\nFlutter Developer"],
                       textAlign: TextAlign.center,
                       textStyle:
                           GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white, height: 2),

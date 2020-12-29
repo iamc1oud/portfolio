@@ -1,7 +1,7 @@
 import 'exports_about.dart';
 
 class AboutTabletDesktop extends StatelessWidget {
-  Color blackColorAccent = Color(0xFFDD5144);
+  Color blackColorAccent = Color(0xff2C2F33);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -28,7 +28,7 @@ class AboutTabletDesktop extends StatelessWidget {
                           repeatForever: false,
                           onFinished: () {},
                           speed: Duration(milliseconds: 200),
-                          text: ["Hi,\nI'm Ajay.\nFlutter Developer."],
+                          text: ["Hi,\nI'm Ajay\nFlutter Developer"],
                           textStyle: GoogleFonts.roboto(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.white),
                         ),
                       ],
