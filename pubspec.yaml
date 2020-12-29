@@ -32,7 +32,9 @@ dependencies:
   animated_text_kit: ^3.1.0
   flutter_icons:
   animated_bottom_navigation_bar:
-
+  responsive_builder:
+  flutter_blurhash:
+  carousel_slider: ^2.3.1
 
 dev_dependencies:
   flutter_test:

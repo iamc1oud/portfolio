@@ -2,6 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:myapp/screen/about/export_about.dart';
+import 'package:myapp/screen/projects/export_project.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,26 +38,28 @@ class _HomePageState extends State<HomePage> {
         body: PageView(
           controller: _pageViewController,
           scrollDirection: Axis.horizontal,
-          children: [AboutPage(), Text("Projects")],
+          children: [About(), Project()],
         ),
         resizeToAvoidBottomPadding: false,
-        floatingActionButton: FloatingActionButton(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: AnimatedBottomNavigationBar(
           activeIndex: activeIndex,
           backgroundColor: Color(0xFF23272B),
           elevation: 5,
           inactiveColor: Colors.white,
-          rightCornerRadius: 1,
-          gapLocation: GapLocation.center,
+          rightCornerRadius: 0,
+          gapLocation: GapLocation.end,
           onTap: (int currentPosition) {
             setState(() {
               activeIndex = currentPosition;
             });
+            _pageViewController.animateToPage(activeIndex,
+                duration: Duration(milliseconds: 400), curve: Curves.fastLinearToSlowEaseIn);
           },
           icons: [
-            AntDesign.profile,
-            FlutterIcons.project_diagram_faw5s,
+            FlutterIcons.info_ant,
+            FlutterIcons.code_string_mco,
+            AntDesign.CodeSandbox,
+            FlutterIcons.contacts_ant,
           ],
         ));
   }
