@@ -3,7 +3,7 @@ import 'dart:js' as js;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
-import 'package:myapp/screen/about/exports_about.dart';
+import 'package:myapp/views/screen/about/exports_about.dart';
 
 class CustomProjectCard extends StatelessWidget {
   final Image image;

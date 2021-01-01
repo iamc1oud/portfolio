@@ -1,11 +1,6 @@
 import 'exports_about.dart';
 
-class AboutDesktop extends StatefulWidget {
-  @override
-  _AboutPageState createState() => _AboutPageState();
-}
-
-class _AboutPageState extends State<AboutDesktop> {
+class AboutTabletDesktop extends StatelessWidget {
   Color blackColorAccent = Color(0xff2C2F33);
 
   @override
@@ -14,7 +9,7 @@ class _AboutPageState extends State<AboutDesktop> {
     return Stack(
       children: [
         Container(
-          color: blackColorAccent,
+          color: ColorTheme().blackColorAccent,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -22,7 +17,7 @@ class _AboutPageState extends State<AboutDesktop> {
             Align(
                 alignment: Alignment.center,
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: size.width * 0.7, minWidth: size.width * 0.3),
+                  constraints: BoxConstraints(maxWidth: size.width * 0.5, minWidth: size.width * 0.3),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Column(
@@ -35,8 +30,7 @@ class _AboutPageState extends State<AboutDesktop> {
                           onFinished: () {},
                           speed: Duration(milliseconds: 200),
                           text: ["Hi,\nI'm Ajay\nFlutter Developer"],
-                          textStyle:
-                              GoogleFonts.robotoMono(fontSize: 100, fontWeight: FontWeight.bold, color: Colors.white),
+                          textStyle: GoogleFonts.roboto(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.white),
                         ),
                       ],
                     ),

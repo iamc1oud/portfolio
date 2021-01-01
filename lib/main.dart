@@ -1,8 +1,8 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:myapp/screen/about/export_about.dart';
-import 'package:myapp/screen/projects/export_project.dart';
+import 'package:myapp/views/screen/about/export_about.dart';
+import 'package:myapp/views/screen/projects/export_project.dart';
 
 void main() {
   runApp(MyApp());

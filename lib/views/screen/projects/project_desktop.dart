@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/screen/about/exports_about.dart';
-import 'package:myapp/screen/projects/components/custom_project_view.dart';
+import 'package:myapp/views/screen/about/exports_about.dart';
+import 'package:myapp/views/screen/projects/components/custom_project_view.dart';
+import 'package:myapp/services/api/services/project_services.dart';
 
 class ProjectDesktop extends StatelessWidget {
   final PageController _projectSliderController = new PageController(initialPage: 0);
@@ -41,6 +42,7 @@ class ProjectDesktop extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          ProjectServices().fetchProjects();
           _projectSliderController.animateToPage(_currentPage + 1,
               duration: Duration(milliseconds: 500), curve: Curves.fastLinearToSlowEaseIn);
         },

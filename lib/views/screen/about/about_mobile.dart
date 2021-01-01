@@ -8,7 +8,7 @@ class AboutMobile extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          color: blackColorAccent,
+          color: ColorTheme().blackColorAccent,
         ),
         Align(
             alignment: Alignment.center,
