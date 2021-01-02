@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/views/screen/about/exports_about.dart';
 import 'package:myapp/views/screen/projects/components/custom_project_view.dart';
-import 'package:myapp/services/api/services/project_services.dart';
+import 'package:http/browser_client.dart';
 
 class ProjectDesktop extends StatelessWidget {
   final PageController _projectSliderController = new PageController(initialPage: 0);
@@ -42,9 +42,18 @@ class ProjectDesktop extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ProjectServices().fetchProjects();
-          _projectSliderController.animateToPage(_currentPage + 1,
-              duration: Duration(milliseconds: 500), curve: Curves.fastLinearToSlowEaseIn);
+          BrowserClient client = new BrowserClient();
+          client
+              .get("http://localhost:8080/project", headers: {
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "localhost:8080",
+              })
+              .then((value) => print(value.body))
+              .catchError((e) => print(e));
+          _projectSliderController
+              .animateToPage(_currentPage + 1,
+                  duration: Duration(milliseconds: 500), curve: Curves.fastLinearToSlowEaseIn)
+              .catchError((e) => print("Layout issue"));
         },
         child: Container(
           width: 60,

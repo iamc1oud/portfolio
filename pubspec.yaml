@@ -35,7 +35,7 @@ dependencies:
   responsive_builder:
   flutter_blurhash:
   carousel_slider: ^2.3.1
-  http:
+  http: 0.12.2
 
 dev_dependencies:
   flutter_test:

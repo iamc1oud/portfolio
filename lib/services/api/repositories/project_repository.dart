@@ -4,8 +4,9 @@ import '../network_utils.dart';
 
 class ProjectRepository {
   Future<String> addProject({@required Project project}) async {}
-  Future<List<Project>> fetchProjects() async {
-    final results = await NetworkUtils().getRequest(path: 'project');
-    print(results);
+  Future<Map<String, dynamic>> fetchProjects() async {
+    final results = await NetworkUtils().getRequest(path: 'project', parameters: {
+      'Accept': 'application/json',
+    });
   }
 }
