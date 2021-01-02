@@ -46,7 +46,9 @@ class CustomProjectCard extends StatelessWidget {
                   //
                   // [Project Name]
                   //
-                  Text(this.title, style: GoogleFonts.robotoMono(fontSize: 100, color: Colors.white)),
+                  ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: size.width * 0.6),
+                      child: Text(this.title, style: GoogleFonts.robotoMono(fontSize: 100, color: Colors.white))),
                   //
                   // [Project Description]
                   //

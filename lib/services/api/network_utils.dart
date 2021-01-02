@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:myapp/models/project_model.dart';
 
 enum ProjectStatus { development, production }
 
@@ -19,18 +20,25 @@ class NetworkUtils {
     return apiUrl;
   }
 
-  Future<Map<String, dynamic>> getRequest({@required String path, Map<String, String> parameters}) async {
+  Future<List<Project>> fetchProjects(String query) async {
+    final results = await getRequest(path: "project");
+    return results.map<Project>((e) => Project.fromJson(e)).toList();
+  }
+
+  ///The method defined to fetch data from API
+  Future<List<dynamic>> getRequest({@required String path, Map<String, String> parameters}) async {
     final uri = Uri.http(getApiUrl(), path, parameters);
     http.Response response = await http.get(uri, headers: _headers);
     //final results = await http.get(uri, headers: _headers);
     final jsonObject = json.decode(response.body);
-    print(jsonObject);
+
     return jsonObject;
   }
 
+  /// Deined headers required for reqeust.
+  // TODOChange the CORS header when deployed
   Map<String, String> get _headers => {
         'Accept': 'application/json',
-        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-        "Access-Control-Allow-Methods": "POST, OPTIONS"
+        "Access-Control-Allow-Origin": "localhost:8080",
       };
 }
