@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:myapp/models/project_model.dart';
 import 'package:myapp/services/api/network_utils.dart';
-import 'components/custom_project_view.dart';
+import 'package:myapp/views/screen/projects/components/custom_project_mobile_view.dart';
+import 'components/custom_project_desktop_view.dart';
 
 enum SliderDirection { Left, Right }
+enum DeviceType { Dekstop, Mobile }
 
 class ProjectCommonWidgets {
   static final PageController _projectSliderController = new PageController(initialPage: 0);
@@ -30,7 +32,7 @@ class ProjectCommonWidgets {
     );
   }
 
-  Widget futureBuilderPageViewWidget() {
+  Widget futureBuilderPageViewWidget([DeviceType _deviceType]) {
     return FutureBuilder(
         future: NetworkUtils().fetchProjects(""),
         // ignore: missing_return
@@ -46,20 +48,25 @@ class ProjectCommonWidgets {
               return Stack(
                 children: [
                   PageView(
-                      onPageChanged: (int currentPage) {
-                        print(currentPage);
-                      },
                       allowImplicitScrolling: true,
                       controller: _projectSliderController,
                       scrollDirection: Axis.horizontal,
                       children: data
-                          .map((e) => CustomProjectCard(
-                              image: Image.network(e.projectBackgroundImage),
-                              appPreviews: e.screenShotLinks,
-                              description: e.projectDescription,
-                              gitHubLink: e.projectGitHubLink,
-                              technologiesUsed: ["Flutter", "Kotlin"],
-                              title: e.projectName))
+                          .map((e) => _deviceType == DeviceType.Dekstop
+                              ? CustomProjectCard(
+                                  image: Image.network(e.projectBackgroundImage),
+                                  appPreviews: e.screenShotLinks,
+                                  description: e.projectDescription,
+                                  gitHubLink: e.projectGitHubLink,
+                                  technologiesUsed: ["Flutter", "Kotlin"],
+                                  title: e.projectName)
+                              : CustomProjectMobileCard(
+                                  image: Image.network(e.projectBackgroundImage),
+                                  appPreviews: e.screenShotLinks,
+                                  description: e.projectDescription,
+                                  gitHubLink: e.projectGitHubLink,
+                                  technologiesUsed: ["Flutter", "Kotlin"],
+                                  title: e.projectName))
                           .toList()),
                   Align(
                     alignment: Alignment.bottomCenter,
