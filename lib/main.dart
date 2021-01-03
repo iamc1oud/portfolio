@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:myapp/views/screen/about/export_about.dart';
 import 'package:myapp/views/screen/projects/export_project.dart';
+import 'package:myapp/views/screen/skill/skill.dart';
 
 void main() {
   runApp(MyApp());
@@ -38,7 +39,7 @@ class _HomePageState extends State<HomePage> {
         body: PageView(
           controller: _pageViewController,
           scrollDirection: Axis.horizontal,
-          children: [About(), Project()],
+          children: [About(), Skill(), Project()],
         ),
         resizeToAvoidBottomPadding: false,
         bottomNavigationBar: AnimatedBottomNavigationBar(
