@@ -6,7 +6,6 @@ import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:myapp/views/screen/about/exports_about.dart';
 
 class CustomProjectMobileCard extends StatelessWidget {
-  final Image image;
   final String title;
   final String gitHubLink;
   final String description;
@@ -15,14 +14,7 @@ class CustomProjectMobileCard extends StatelessWidget {
   final List<String> appPreviews;
 
   const CustomProjectMobileCard(
-      {Key key,
-      this.image,
-      this.title,
-      this.gitHubLink,
-      this.technologiesUsed,
-      this.description,
-      this.blurhash,
-      this.appPreviews})
+      {Key key, this.title, this.gitHubLink, this.technologiesUsed, this.description, this.blurhash, this.appPreviews})
       : super(key: key);
 
   @override
