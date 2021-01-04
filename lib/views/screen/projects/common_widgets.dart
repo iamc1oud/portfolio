@@ -16,9 +16,9 @@ class ProjectCommonWidgets {
     return InkWell(
       onTap: () {
         if (direction == SliderDirection.Left) {
-          _projectSliderController.previousPage(curve: Curves.easeIn, duration: Duration(milliseconds: 300));
+          _projectSliderController.previousPage(curve: Curves.easeIn, duration: Duration(milliseconds: 500));
         } else
-          _projectSliderController.nextPage(curve: Curves.easeIn, duration: Duration(milliseconds: 300));
+          _projectSliderController.nextPage(curve: Curves.easeIn, duration: Duration(milliseconds: 500));
       },
       child: Container(
           height: 50,
@@ -32,12 +32,11 @@ class ProjectCommonWidgets {
     );
   }
 
-  Widget futureBuilderPageViewWidget([DeviceType _deviceType]) {
+  Widget futureBuilderPageViewWidget([DeviceType _deviceType, Size size]) {
     return FutureBuilder(
         future: NetworkUtils().fetchProjects(""),
         // ignore: missing_return
         builder: (context, snapshot) {
-          List<Project> data = snapshot.data;
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
               return Center(
@@ -45,8 +44,20 @@ class ProjectCommonWidgets {
               );
               break;
             case ConnectionState.done:
+              List<Project> data = snapshot.data;
+              if (data == null) {
+                return Center(child: CircularProgressIndicator());
+              }
               return Stack(
                 children: [
+                  Container(
+                    height: size.height,
+                    width: size.width,
+                    color: Colors.white,
+                    child: CustomPaint(
+                      painter: EdgePainter(),
+                    ),
+                  ),
                   PageView(
                       allowImplicitScrolling: true,
                       controller: _projectSliderController,
@@ -90,5 +101,37 @@ class ProjectCommonWidgets {
               break;
           }
         });
+  }
+}
+
+class EdgePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    var rect = Offset.zero & size;
+
+    var paint = Paint();
+    paint.color = Colors.green[800];
+    paint.style = PaintingStyle.fill; // Change this to fill
+    paint.shader = LinearGradient(
+      begin: Alignment.topRight,
+      end: Alignment.bottomLeft,
+      colors: [
+        Colors.blue[500],
+        Colors.blue[900],
+      ],
+    ).createShader(rect);
+    var path = Path();
+    path.moveTo(0, 0);
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width, size.height);
+    path.lineTo(size.width / 2.4, size.height);
+    path.lineTo(0, size.height * 0.3);
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
   }
 }

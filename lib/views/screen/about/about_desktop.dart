@@ -6,13 +6,20 @@ class AboutDesktop extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutDesktop> {
+  EdgePainter edgePainter = new EdgePainter();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Stack(
       children: [
         Container(
-          color: ColorTheme().blackColorAccent,
+          height: size.height,
+          width: size.width,
+          color: Colors.white,
+          child: CustomPaint(
+            painter: edgePainter,
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,7 +41,7 @@ class _AboutPageState extends State<AboutDesktop> {
                           speed: Duration(milliseconds: 200),
                           text: ["Hi,\nI'm Ajay\nFlutter Developer"],
                           textStyle:
-                              GoogleFonts.robotoMono(fontSize: 100, fontWeight: FontWeight.bold, color: Colors.white),
+                              GoogleFonts.robotoMono(fontSize: 80, fontWeight: FontWeight.bold, color: Colors.white),
                         ),
                       ],
                     ),
@@ -78,5 +85,37 @@ class _AboutPageState extends State<AboutDesktop> {
         )
       ],
     );
+  }
+}
+
+class EdgePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    var rect = Offset.zero & size;
+
+    var paint = Paint();
+    paint.color = Colors.green[800];
+    paint.style = PaintingStyle.fill; // Change this to fill
+    paint.shader = LinearGradient(
+      begin: Alignment.topRight,
+      end: Alignment.bottomLeft,
+      colors: [
+        Colors.blue[900],
+        Colors.blue[500],
+      ],
+    ).createShader(rect);
+    var path = Path();
+    path.moveTo(0, 0);
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width, size.height * 0.4);
+    path.lineTo(size.width / 2, size.height * 0.95);
+    path.lineTo(0, size.height * 0.8);
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
   }
 }

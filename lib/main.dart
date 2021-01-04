@@ -30,6 +30,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final Color bottomNavBarColor = Color(0xFF66bfbf);
   final PageController _pageViewController = new PageController(initialPage: 0);
   int activeIndex = 0;
 
@@ -44,9 +45,7 @@ class _HomePageState extends State<HomePage> {
         resizeToAvoidBottomPadding: false,
         bottomNavigationBar: AnimatedBottomNavigationBar(
           activeIndex: activeIndex,
-          backgroundColor: Color(0xFF23272B),
           elevation: 5,
-          inactiveColor: Colors.white,
           rightCornerRadius: 0,
           gapWidth: 20,
           gapLocation: GapLocation.end,
@@ -54,8 +53,7 @@ class _HomePageState extends State<HomePage> {
             setState(() {
               activeIndex = currentPosition;
             });
-            _pageViewController.animateToPage(activeIndex,
-                duration: Duration(milliseconds: 400), curve: Curves.fastLinearToSlowEaseIn);
+            _pageViewController.animateToPage(activeIndex, duration: Duration(milliseconds: 600), curve: Curves.easeIn);
           },
           icons: [
             FlutterIcons.info_ant,

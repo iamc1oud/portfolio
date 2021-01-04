@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:myapp/models/project_model.dart';
+import 'package:myapp/models/skill_model.dart';
 
 enum ProjectStatus { development, production }
 
@@ -23,6 +24,11 @@ class NetworkUtils {
   Future<List<Project>> fetchProjects(String query) async {
     final results = await getRequest(path: "project");
     return results.map<Project>((e) => Project.fromJson(e)).toList();
+  }
+
+  Future<List<Skill>> fetchSkills(String query) async {
+    final results = await getRequest(path: "skill");
+    return results.map<Skill>((e) => Skill.fromJson(e)).toList();
   }
 
   ///The method defined to fetch data from API

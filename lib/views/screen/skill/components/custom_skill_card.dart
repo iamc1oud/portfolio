@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:myapp/views/screen/about/exports_about.dart';
 
@@ -13,17 +15,28 @@ class CustomSkillCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Material(
+        color: Colors.white38.withOpacity(0.6),
         elevation: 2,
-        borderRadius: BorderRadius.circular(20),
-        child: Container(
+        clipBehavior: Clip.antiAlias,
+        borderRadius: BorderRadius.circular(10),
+        child: SizedBox(
+            width: 240,
             child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(height: 100, child: Image.asset("assets/skill_logo/kotlin.png")),
-            Text(this.name, style: GoogleFonts.droidSansMono(fontSize: 30)),
-            Text(this.description, style: GoogleFonts.roboto(fontSize: 15))
-          ],
-        )),
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(height: 50, child: Image.asset("assets/skill_logo/kotlin.png")),
+                Text(this.name, style: GoogleFonts.droidSansMono(fontSize: 20, fontWeight: FontWeight.bold)),
+                Divider(),
+                Text(
+                  this.description,
+                  style: GoogleFonts.roboto(fontSize: 16),
+                  overflow: TextOverflow.clip,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                )
+              ],
+            )),
       ),
     );
   }

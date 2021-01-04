@@ -29,25 +29,21 @@ class CustomProjectMobileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
-      decoration: BoxDecoration(image: DecorationImage(image: this.image.image, fit: BoxFit.cover)),
       child: Stack(
         children: [
-          BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 2),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 18.0),
+          Padding(
+            padding: const EdgeInsets.only(left: 18.0),
 
-              /// TODO Add fade-in transition for the project name and its description.
-              /// Convert stateless to stateful and use animation controllers
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
-              ),
+            /// TODO Add fade-in transition for the project name and its description.
+            /// Convert stateless to stateful and use animation controllers
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+              ],
             ),
           ),
           Align(
@@ -61,7 +57,10 @@ class CustomProjectMobileCard extends StatelessWidget {
                   //
                   // [Project Description]
                   //
-                  Text(this.description, style: GoogleFonts.robotoMono(fontSize: 12, color: Color(0xFFC4C4C4))),
+                  Text(this.description, style: GoogleFonts.robotoMono(fontSize: 12, color: Colors.white)),
+                  SizedBox(
+                    height: 20,
+                  ),
                   SizedBox(
                     height: size.height * 0.6,
                     child: CarouselSlider(
@@ -98,7 +97,7 @@ class CustomProjectMobileCard extends StatelessWidget {
                               RotateAnimatedTextKit(
                                   repeatForever: true,
                                   text: this.technologiesUsed,
-                                  textStyle: GoogleFonts.roboto(fontSize: 20.0, color: Colors.white),
+                                  textStyle: GoogleFonts.roboto(fontSize: 20.0, color: Colors.black),
                                   textAlign: TextAlign.start),
                             ],
                           ),

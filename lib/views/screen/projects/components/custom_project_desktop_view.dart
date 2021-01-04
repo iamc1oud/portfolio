@@ -29,76 +29,72 @@ class CustomProjectCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
-      decoration: BoxDecoration(image: DecorationImage(image: this.image.image, fit: BoxFit.cover)),
       child: Stack(
         children: [
-          BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 2),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 18.0),
+          Padding(
+            padding: const EdgeInsets.only(left: 18.0),
 
-              /// TODO Add fade-in transition for the project name and its description.
-              /// Convert stateless to stateful and use animation controllers
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  //
-                  // [Project Name]
-                  //
-                  ConstrainedBox(
-                      constraints: BoxConstraints(maxWidth: size.width * 0.6),
-                      child: Text(this.title, style: GoogleFonts.robotoMono(fontSize: 100, color: Colors.white))),
-                  //
-                  // [Project Description]
-                  //
-                  Text(this.description, style: GoogleFonts.robotoMono(fontSize: 30, color: Color(0xFFC4C4C4))),
-                  SizedBox(
-                    height: 20,
+            /// TODO Add fade-in transition for the project name and its description.
+            /// Convert stateless to stateful and use animation controllers
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //
+                // [Project Name]
+                //
+                ConstrainedBox(
+                    constraints: BoxConstraints(maxWidth: size.width * 0.6),
+                    child: Text(this.title, style: GoogleFonts.robotoMono(fontSize: 100, color: Color(0xFF16161D)))),
+                //
+                // [Project Description]
+                //
+                Text(this.description, style: GoogleFonts.robotoMono(fontSize: 30, color: Color(0xFF16161D))),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: 50,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      RotateAnimatedTextKit(
+                          repeatForever: true,
+                          text: this.technologiesUsed,
+                          textStyle: GoogleFonts.roboto(fontSize: 30.0, color: Colors.black),
+                          textAlign: TextAlign.start),
+                    ],
                   ),
-                  Container(
-                    height: 50,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                InkWell(
+                  onTap: () {
+                    js.context.callMethod("open", [this.gitHubLink]);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(18),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black), borderRadius: BorderRadius.all(Radius.circular(20))),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        RotateAnimatedTextKit(
-                            repeatForever: true,
-                            text: this.technologiesUsed,
-                            textStyle: GoogleFonts.roboto(fontSize: 30.0, color: Colors.white),
-                            textAlign: TextAlign.start),
+                      children: [
+                        Text("GitHub", style: GoogleFonts.ubuntu(fontSize: 40, color: Colors.black)),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Icon(
+                          FlutterIcons.github_with_circle_ent,
+                          color: Colors.black,
+                          size: 40,
+                        )
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      js.context.callMethod("open", [this.gitHubLink]);
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(18),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white), borderRadius: BorderRadius.all(Radius.circular(20))),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text("GitHub", style: GoogleFonts.ubuntu(fontSize: 40, color: Colors.white)),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Icon(
-                            FlutterIcons.github_with_circle_ent,
-                            color: Colors.white,
-                            size: 40,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Align(
