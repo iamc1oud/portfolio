@@ -172,14 +172,15 @@ class _ContactDesktopState extends State<ContactDesktop> {
 
   Widget submitButton() {
     return Container(
-      height: 40,
+      height: 60,
       child: RaisedButton(
         color: Colors.pink[500],
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
           child: Text("Submit Project",
-              style: GoogleFonts.robotoMono(
+              style: GoogleFonts.raleway(
+                fontSize: 20,
                 color: Colors.white,
               )),
         ),

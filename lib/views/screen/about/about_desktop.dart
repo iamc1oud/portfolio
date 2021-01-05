@@ -10,7 +10,6 @@ class _AboutPageState extends State<AboutDesktop> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     return Stack(
       children: [
         Container(
@@ -18,7 +17,14 @@ class _AboutPageState extends State<AboutDesktop> {
           width: size.width,
           color: Colors.white,
           child: CustomPaint(
-            painter: edgePainter,
+            painter: EdgePainter(),
+          ),
+        ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: Padding(
+            padding: EdgeInsets.only(right: size.width * 0.2),
+            child: downloadResumeButton(),
           ),
         ),
         Row(
@@ -96,6 +102,23 @@ class _AboutPageState extends State<AboutDesktop> {
           ],
         )
       ],
+    );
+  }
+
+  Widget downloadResumeButton() {
+    return Container(
+      height: 80,
+      child: RaisedButton(
+        color: Colors.pink[500],
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
+          child: Text("Download CV", style: GoogleFonts.raleway(color: Colors.white, fontSize: 40)),
+        ),
+        onPressed: () {
+          print("Show dialog and submit form");
+        },
+      ),
     );
   }
 }

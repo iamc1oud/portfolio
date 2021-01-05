@@ -1,3 +1,5 @@
+import 'package:myapp/views/screen/about/about_desktop.dart';
+
 import 'exports_about.dart';
 
 class AboutMobile extends StatelessWidget {
@@ -8,17 +10,22 @@ class AboutMobile extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          color: ColorTheme().blackColorAccent,
+          height: size.height,
+          width: size.width,
+          color: Colors.white,
+          child: CustomPaint(
+            painter: EdgePainter(),
+          ),
         ),
         Align(
-            alignment: Alignment.center,
+            alignment: Alignment.topLeft,
             child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: size.width * 0.5, minWidth: size.width * 0.3),
+              constraints: BoxConstraints(maxWidth: size.width * 0.8, minWidth: size.width * 0.3),
               child: Padding(
-                padding: const EdgeInsets.only(left: 18.0),
+                padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 25),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     TypewriterAnimatedTextKit(
                       repeatForever: false,
@@ -28,9 +35,9 @@ class AboutMobile extends StatelessWidget {
                       },
                       speed: Duration(milliseconds: 100),
                       text: ["Hi,\nI'm Ajay\nFlutter Developer"],
-                      textAlign: TextAlign.center,
-                      textStyle:
-                          GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white, height: 2),
+                      textAlign: TextAlign.left,
+                      textStyle: GoogleFonts.roboto(
+                          fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white, height: 1.6),
                     ),
                   ],
                 ),

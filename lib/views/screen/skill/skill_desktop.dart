@@ -10,11 +10,6 @@ class SkillDesktop extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          await NetworkUtils().fetchSkills("query");
-        },
-      ),
       body: Stack(
         children: [
           Container(
