@@ -29,7 +29,7 @@ class _ContactDesktopState extends State<ContactDesktop> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Row(mainAxisSize: MainAxisSize.min, children: [
                     Padding(
@@ -126,13 +126,66 @@ class _ContactDesktopState extends State<ContactDesktop> {
                   ]),
                   Row(
                     mainAxisSize: MainAxisSize.min,
-                    children: [],
-                  )
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(" I Need Help With...", style: GoogleFonts.robotoMono(color: Colors.white)),
+                          Row(
+                            children: [
+                              buildHelpOptions("Web Development", FlutterIcons.web_mco),
+                              buildHelpOptions("App Development", FlutterIcons.mobile1_ant)
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Row(mainAxisSize: MainAxisSize.min, children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("More Information", style: GoogleFonts.robotoMono(color: Colors.white)),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                            child: Container(
+                              width: size.width * 0.3,
+                              height: size.height * 0.3,
+                              child: buildInputField(prefixIcon: AntDesign.info),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ]),
+                  Padding(padding: EdgeInsets.symmetric(horizontal: size.width * 0.25), child: submitButton())
                 ],
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget submitButton() {
+    return Container(
+      height: 40,
+      child: RaisedButton(
+        color: Colors.pink[500],
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
+          child: Text("Submit Project",
+              style: GoogleFonts.robotoMono(
+                color: Colors.white,
+              )),
+        ),
+        onPressed: () {
+          print("Show dialog and submit form");
+        },
       ),
     );
   }
@@ -143,6 +196,7 @@ class _ContactDesktopState extends State<ContactDesktop> {
       bool isEnabled = true,
       VoidCallback callOnTap,
       List<FilteringTextInputFormatter> inputFormatter,
+      double height,
       String value}) {
     return TextFormField(
         enabled: isEnabled,
@@ -151,6 +205,7 @@ class _ContactDesktopState extends State<ContactDesktop> {
         onTap: callOnTap,
         inputFormatters: inputFormatter,
         style: GoogleFonts.robotoMono(color: Colors.white),
+        maxLines: null,
         decoration: InputDecoration(
             hintText: value,
             hintStyle: GoogleFonts.ubuntu(color: Colors.white),
@@ -164,6 +219,36 @@ class _ContactDesktopState extends State<ContactDesktop> {
             filled: true,
             hoverColor: Colors.black38,
             labelStyle: TextStyle(color: Colors.white)));
+  }
+
+  Widget buildHelpOptions(String title, IconData icon) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        height: 120,
+        width: 220,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(
+                icon,
+                color: Colors.black,
+                size: 50,
+              ),
+              Text(title,
+                  style: GoogleFonts.robotoMono(
+                    color: Colors.black,
+                  ))
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
