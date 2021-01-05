@@ -48,7 +48,7 @@ class AboutMobile extends StatelessWidget {
                     url: "https://www.facebook.com/black.birdcoder",
                     icon: Icon(
                       FontAwesome.facebook_square,
-                      color: Colors.white,
+                      color: ColorTheme().iconTheme,
                     ),
                   ),
                   SizedBox(
@@ -58,21 +58,27 @@ class AboutMobile extends StatelessWidget {
                     url: "https://www.linkedin.com/in/ajay-kumar-singh-737182154/",
                     icon: Icon(
                       FontAwesome.linkedin_square,
-                      color: Colors.white,
+                      color: ColorTheme().iconTheme,
                     ),
                   ),
                   SizedBox(
                     width: 5,
                   ),
                   SocialLink(
-                    icon: Icon(AntDesign.instagram, color: Colors.white),
+                    icon: Icon(
+                      AntDesign.instagram,
+                      color: ColorTheme().iconTheme,
+                    ),
                     url: "https://www.instagram.com/iamcloud.dev",
                   ),
                   SizedBox(
                     width: 5,
                   ),
                   SocialLink(
-                    icon: Icon(AntDesign.github, color: Colors.white),
+                    icon: Icon(
+                      AntDesign.github,
+                      color: ColorTheme().iconTheme,
+                    ),
                     url: "https://www.github.com/AjjuSingh",
                   )
                 ],

@@ -65,14 +65,12 @@ class ProjectCommonWidgets {
                       children: data
                           .map((e) => _deviceType == DeviceType.Dekstop
                               ? CustomProjectCard(
-                                  image: Image.network(e.projectBackgroundImage),
                                   appPreviews: e.screenShotLinks,
                                   description: e.projectDescription,
                                   gitHubLink: e.projectGitHubLink,
                                   technologiesUsed: ["Flutter", "Kotlin"],
                                   title: e.projectName)
                               : CustomProjectMobileCard(
-                                  image: Image.network(e.projectBackgroundImage),
                                   appPreviews: e.screenShotLinks,
                                   description: e.projectDescription,
                                   gitHubLink: e.projectGitHubLink,
