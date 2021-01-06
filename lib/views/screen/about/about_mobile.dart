@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:myapp/views/screen/about/about_desktop.dart';
 
 import 'exports_about.dart';
@@ -18,14 +20,13 @@ class AboutMobile extends StatelessWidget {
           ),
         ),
         Align(
-            alignment: Alignment.topLeft,
+            alignment: Alignment.center,
             child: ConstrainedBox(
               constraints: BoxConstraints(maxWidth: size.width * 0.8, minWidth: size.width * 0.3),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 25),
+                padding: const EdgeInsets.symmetric(vertical: 24),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     TypewriterAnimatedTextKit(
                       repeatForever: false,
@@ -39,6 +40,7 @@ class AboutMobile extends StatelessWidget {
                       textStyle: GoogleFonts.roboto(
                           fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white, height: 1.6),
                     ),
+                    downloadResumeButton()
                   ],
                 ),
               ),
@@ -92,6 +94,26 @@ class AboutMobile extends StatelessWidget {
               ),
             ))
       ],
+    );
+  }
+
+  Widget downloadResumeButton() {
+    return Container(
+      height: 80,
+      child: RaisedButton(
+        color: Colors.pink[500],
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
+          child: Text("Download CV", style: GoogleFonts.raleway(color: Colors.white, fontSize: 20)),
+        ),
+        onPressed: () {
+          context.callMethod("open", [
+            "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a3948a13-8e51-4220-8f59-20673bd63f78/Ajays_Resume_Latest.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210106%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210106T140554Z&X-Amz-Expires=86400&X-Amz-Signature=5e7a531a4a67f244465e8cc90b56e402338e0f315a2d565a14ce28cebe90e4b2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Ajay%27s%2520Resume%2520Latest.pdf%22"
+          ]);
+          print("Show dialog and submit form");
+        },
+      ),
     );
   }
 }

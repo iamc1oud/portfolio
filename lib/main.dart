@@ -30,7 +30,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   final Color bottomNavBarColor = Color(0xFF66bfbf);
   final PageController _pageViewController = new PageController(initialPage: 0);
   int activeIndex = 0;
@@ -39,6 +39,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: PageView(
+          onPageChanged: (pos) {
+            setState(() {
+              activeIndex = pos;
+            });
+          },
           controller: _pageViewController,
           scrollDirection: Axis.horizontal,
           children: [About(), Skill(), Project(), ContactMePage()],
@@ -64,4 +69,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ));
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

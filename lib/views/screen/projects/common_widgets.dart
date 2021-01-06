@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:myapp/models/project_model.dart';
 import 'package:myapp/services/api/network_utils.dart';
+import 'package:myapp/utils/consts.dart';
 import 'package:myapp/views/screen/projects/components/custom_project_mobile_view.dart';
 import 'components/custom_project_desktop_view.dart';
 
 enum SliderDirection { Left, Right }
-enum DeviceType { Dekstop, Mobile }
 
 class ProjectCommonWidgets {
   static final PageController _projectSliderController = new PageController(initialPage: 0);
@@ -63,7 +63,7 @@ class ProjectCommonWidgets {
                       controller: _projectSliderController,
                       scrollDirection: Axis.horizontal,
                       children: data
-                          .map((e) => _deviceType == DeviceType.Dekstop
+                          .map((e) => _deviceType == DeviceType.Desktop
                               ? CustomProjectCard(
                                   appPreviews: e.screenShotLinks,
                                   description: e.projectDescription,

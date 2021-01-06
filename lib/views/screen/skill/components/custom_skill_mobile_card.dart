@@ -3,12 +3,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:myapp/views/screen/about/exports_about.dart';
 
-class CustomSkillCard extends StatelessWidget {
+class CustomSkillMobileCard extends StatelessWidget {
   final String name;
   final String assetImage;
   final String description;
 
-  const CustomSkillCard({Key key, this.name, this.assetImage, this.description}) : super(key: key);
+  const CustomSkillMobileCard({Key key, this.name, this.assetImage, this.description}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +20,17 @@ class CustomSkillCard extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(10),
         child: SizedBox(
-            width: 240,
+            width: 120,
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(height: 50, child: Image.asset("assets/skill_logo/kotlin.png")),
-                Text(this.name, style: GoogleFonts.droidSansMono(fontSize: 30, fontWeight: FontWeight.bold)),
+                Container(height: 30, child: Image.asset("assets/skill_logo/kotlin.png")),
+                Text(this.name, style: GoogleFonts.droidSansMono(fontSize: 16, fontWeight: FontWeight.bold)),
                 Divider(),
                 Text(
                   this.description,
-                  style: GoogleFonts.roboto(fontSize: 16),
+                  style: GoogleFonts.roboto(fontSize: 14),
                   overflow: TextOverflow.clip,
                   maxLines: 2,
                   textAlign: TextAlign.center,
