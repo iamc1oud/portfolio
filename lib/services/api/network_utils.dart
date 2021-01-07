@@ -16,7 +16,7 @@ class NetworkUtils {
       apiUrl = 'localhost:8080';
     } else {
       //TODOChange the apiUrl when api is deployed
-      apiUrl = "https://iamcloud.herokuapp.com/";
+      apiUrl = "https://iamcloud.herokuapp.com";
     }
     return apiUrl;
   }
