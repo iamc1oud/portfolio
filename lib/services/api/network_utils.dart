@@ -8,7 +8,7 @@ enum ProjectStatus { development, production }
 
 class NetworkUtils {
   String apiUrl;
-  ProjectStatus currentProjectStatus = ProjectStatus.development;
+  ProjectStatus currentProjectStatus = ProjectStatus.production;
 
   /// Returns the base url for using api services
   String getApiUrl() {
@@ -16,7 +16,7 @@ class NetworkUtils {
       apiUrl = 'localhost:8080';
     } else {
       //TODOChange the apiUrl when api is deployed
-      apiUrl = "DEPLOYED WEBSITE URL";
+      apiUrl = "https://portfolio-spring-boot-api.herokuapp.com/";
     }
     return apiUrl;
   }
