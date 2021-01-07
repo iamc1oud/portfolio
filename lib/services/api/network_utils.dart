@@ -16,7 +16,7 @@ class NetworkUtils {
       apiUrl = 'localhost:8080';
     } else {
       //TODOChange the apiUrl when api is deployed
-      apiUrl = "https://iamcloud.herokuapp.com";
+      apiUrl = "iamcloud.herokuapp.com";
     }
     return apiUrl;
   }
@@ -33,8 +33,10 @@ class NetworkUtils {
 
   ///The method defined to fetch data from API
   Future<List<dynamic>> getRequest({@required String path, Map<String, String> parameters}) async {
+    print("Fetching data from " + getApiUrl());
     final uri = Uri.http(getApiUrl(), path, parameters);
     http.Response response = await http.get(uri, headers: _headers);
+    print(response);
     //final results = await http.get(uri, headers: _headers);
     final jsonObject = json.decode(response.body);
 
@@ -45,6 +47,6 @@ class NetworkUtils {
   // TODOChange the CORS header when deployed
   Map<String, String> get _headers => {
         'Accept': 'application/json',
-        "Access-Control-Allow-Origin": "localhost:8080",
+        "Access-Control-Allow-Origin": getApiUrl(),
       };
 }
