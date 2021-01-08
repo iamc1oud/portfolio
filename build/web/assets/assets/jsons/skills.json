@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "skillName": "Languages",
+        "allLearnedSkills": [
+            {
+                "imgSrc": "https://github.com/abranhe/programming-languages-logos/blob/master/src/python/python_64x64.png",
+                "name": "JAVA",
+                "description": "Python is a programming language that lets you work quicklyand integrate systems more effectively."
+            },
+            {
+                "imgSrc": "https://github.com/abranhe/programming-languages-logos/blob/master/src/python/python_64x64.png",
+                "name": "Python",
+                "description": "Python is a programming language that lets you work quicklyand integrate systems more effectively."
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "skillName": "Backend",
+        "allLearnedSkills": [
+            {
+                "imgSrc": "https://github.com/abranhe/programming-languages-logos/blob/master/src/python/python_64x64.png",
+                "name": "Spring Boot",
+                "description": "Python is a programming language that lets you work quicklyand integrate systems more effectively."
+            }
+        ]
+    }
+]
