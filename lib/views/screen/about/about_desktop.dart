@@ -117,9 +117,8 @@ class _AboutPageState extends State<AboutDesktop> {
           child: Text("Download CV", style: GoogleFonts.raleway(color: Colors.white, fontSize: 40)),
         ),
         onPressed: () {
-          js.context.callMethod("open", [
-            "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a3948a13-8e51-4220-8f59-20673bd63f78/Ajays_Resume_Latest.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210106%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210106T140554Z&X-Amz-Expires=86400&X-Amz-Signature=5e7a531a4a67f244465e8cc90b56e402338e0f315a2d565a14ce28cebe90e4b2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Ajay%27s%2520Resume%2520Latest.pdf%22"
-          ]);
+          js.context.callMethod(
+              "open", ["https://drive.google.com/file/d/1Gv4-tRpmnDhZPaA1qB1Od6_pLrFip2Im/view?usp=sharing"]);
           print("Show dialog and submit form");
         },
       ),

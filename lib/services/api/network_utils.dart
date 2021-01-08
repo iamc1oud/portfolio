@@ -48,6 +48,5 @@ class NetworkUtils {
   // TODOChange the CORS header when deployed
   Map<String, String> get _headers => {
         'Accept': 'application/json',
-        "Access-Control-Allow-Origin": getApiUrl(),
       };
 }
