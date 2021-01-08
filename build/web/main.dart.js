@@ -60625,7 +60625,7 @@ pl:function(a){return this.Ln(a)},
 Ln:function(a){var s=0,r=P.a9(t.TN),q,p
 var $async$pl=P.a4(function(b,c){if(b===1)return P.a6(c,r)
 while(true)switch(s){case 0:s=3
-return P.af($.kY().Jy("jsons/skills.json"),$async$pl)
+return P.af($.kY().Jy("assets/jsons/skills.json"),$async$pl)
 case 3:p=c
 P.f3(p)
 q=C.bm.di(0,p)
@@ -60637,7 +60637,7 @@ pi:function(a){return this.Lh(a)},
 Lh:function(a){var s=0,r=P.a9(t.TN),q,p
 var $async$pi=P.a4(function(b,c){if(b===1)return P.a6(c,r)
 while(true)switch(s){case 0:s=3
-return P.af($.kY().Jy("jsons/projects.json"),$async$pi)
+return P.af($.kY().Jy("assets/jsons/projects.json"),$async$pi)
 case 3:p=c
 P.f3(p)
 q=C.bm.di(0,p)
