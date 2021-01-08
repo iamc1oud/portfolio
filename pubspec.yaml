@@ -36,7 +36,8 @@ dependencies:
   flutter_blurhash:
   carousel_slider: ^2.3.1
   http: 0.12.2
-  fl_chart: ^0.12.2
+  dio: ^3.0.10
+
 
 
 dev_dependencies:

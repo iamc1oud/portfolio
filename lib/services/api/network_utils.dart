@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:myapp/models/project_model.dart';
 import 'package:myapp/models/skill_model.dart';
+import 'package:dio/dio.dart';
 
 enum ProjectStatus { development, production }
 
@@ -16,7 +17,7 @@ class NetworkUtils {
       apiUrl = 'localhost:8080';
     } else {
       //TODOChange the apiUrl when api is deployed
-      apiUrl = "http://iamcloud.herokuapp.com";
+      apiUrl = "https://iamcloud.herokuapp.com";
     }
     return apiUrl;
   }
@@ -34,11 +35,11 @@ class NetworkUtils {
   ///The method defined to fetch data from API
   Future<List<dynamic>> getRequest({@required String path, Map<String, String> parameters}) async {
     print("Fetching data from " + getApiUrl());
+
     final uri = Uri.http(getApiUrl(), path, parameters);
-    http.Response response = await http.get(uri, headers: _headers);
-    print(response);
-    //final results = await http.get(uri, headers: _headers);
-    final jsonObject = json.decode(response.body);
+
+    final results = await http.get(uri, headers: _headers);
+    final jsonObject = json.decode(results.body);
 
     return jsonObject;
   }
