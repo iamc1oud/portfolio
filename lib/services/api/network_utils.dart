@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:myapp/models/project_model.dart';
 import 'package:myapp/models/skill_model.dart';
 import 'package:dio/dio.dart';
+import 'package:myapp/views/screen/about/exports_about.dart';
 
 enum ProjectStatus { development, production }
 
@@ -23,30 +25,35 @@ class NetworkUtils {
   }
 
   Future<List<Project>> fetchProjects(String query) async {
-    final results = await getRequest(path: "project");
+    final results = await getProjects(path: "project");
     return results.map<Project>((e) => Project.fromJson(e)).toList();
   }
 
   Future<List<Skill>> fetchSkills(String query) async {
-    final results = await getRequest(path: "skill");
+    final results = await getSkills(path: "skill");
     return results.map<Skill>((e) => Skill.fromJson(e)).toList();
   }
 
   ///The method defined to fetch data from API
-  Future<List<dynamic>> getRequest({@required String path, Map<String, String> parameters}) async {
-    print("Fetching data from " + getApiUrl());
+  Future<List<dynamic>> getSkills({@required String path, Map<String, String> parameters}) async {
+    // final uri = Uri.http(getApiUrl(), path, parameters);
+    // final results = await http.get(uri, headers: _headers);
+    String data = await rootBundle.loadString("jsons/skills.json");
+    print(data);
+    final jsonObject = json.decode(data);
+    return jsonObject;
+  }
 
-    final uri = Uri.http(getApiUrl(), path, parameters);
-
-    final results = await http.get(uri, headers: _headers);
-    final jsonObject = json.decode(results.body);
-
+  Future<List<dynamic>> getProjects({@required String path, Map<String, String> parameters}) async {
+    // final uri = Uri.http(getApiUrl(), path, parameters);
+    // final results = await http.get(uri, headers: _headers);
+    String data = await rootBundle.loadString("jsons/projects.json");
+    print(data);
+    final jsonObject = json.decode(data);
     return jsonObject;
   }
 
   /// Deined headers required for reqeust.
   // TODOChange the CORS header when deployed
-  Map<String, String> get _headers => {
-        'Accept': 'application/json',
-      };
+  Map<String, String> get _headers => {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'};
 }
