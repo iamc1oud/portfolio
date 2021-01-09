@@ -25,12 +25,12 @@ class NetworkUtils {
   }
 
   Future<List<Project>> fetchProjects(String query) async {
-    final results = await getProjects(path: "project");
+    final results = await getSkills(path: "projects");
     return results.map<Project>((e) => Project.fromJson(e)).toList();
   }
 
   Future<List<Skill>> fetchSkills(String query) async {
-    final results = await getSkills(path: "skill");
+    final results = await getSkills(path: "skills");
     return results.map<Skill>((e) => Skill.fromJson(e)).toList();
   }
 
@@ -38,7 +38,7 @@ class NetworkUtils {
   Future<List<dynamic>> getSkills({@required String path, Map<String, String> parameters}) async {
     // final uri = Uri.http(getApiUrl(), path, parameters);
     // final results = await http.get(uri, hecd b aders: _headers);
-    String data = await rootBundle.loadString("assets/jsons/skills.json");
+    String data = await rootBundle.loadString("assets/jsons/${path}.json");
     print(data);
     final jsonObject = json.decode(data);
     return jsonObject;

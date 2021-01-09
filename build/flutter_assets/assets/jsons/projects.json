@@ -1,0 +1,18 @@
+[
+    {
+        "projectId": 2,
+        "projectName": "Flutter Chat App",
+        "projectDescription": "Good UI build chat app with Flutter",
+        "projectGitHubLink": "https://github.com/AjjuSingh/Flutter-Chat-App-w-Firebase",
+        "screenShotLinks": [
+            "https://github.com/AjjuSingh/Flutter-Chat-App-w-Firebase/blob/master/flutter_02.png?raw=true",
+            "https://github.com/AjjuSingh/Flutter-Chat-App-w-Firebase/blob/master/flutter_01.png?raw=true",
+            "https://github.com/AjjuSingh/Flutter-Chat-App-w-Firebase/blob/master/iPhone%20X-XS-11%20Pro%20%E2%80%93%202.jpg?raw=true"
+        ],
+        "projectBackgroundImage": "https://archive-media-1.nyafuu.org/wg/image/1469/76/1469761522463.png",
+        "technologiesUsed": [
+            "Flutter",
+            "Firebase"
+        ]
+    }
+]
