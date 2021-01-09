@@ -37,7 +37,7 @@ class NetworkUtils {
   ///The method defined to fetch data from API
   Future<List<dynamic>> getSkills({@required String path, Map<String, String> parameters}) async {
     // final uri = Uri.http(getApiUrl(), path, parameters);
-    // final results = await http.get(uri, headers: _headers);
+    // final results = await http.get(uri, hecd b aders: _headers);
     String data = await rootBundle.loadString("assets/jsons/skills.json");
     print(data);
     final jsonObject = json.decode(data);
